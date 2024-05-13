@@ -1,10 +1,10 @@
-from app import db
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email
-from flask_login import LoginManager, UserMixin
+from flask_login import  UserMixin
+from flask_sqlalchemy import SQLAlchemy
 
-
+db = SQLAlchemy()
 
 class Role(db.Model):
     __tablename__='roles'

@@ -2,32 +2,32 @@ from flask import Flask, request, jsonify,session, redirect, Blueprint
 from flask_wtf import FlaskForm
 from flask_cors import CORS 
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
+from .model import db, User, LoginForm, Tag, Role, Comment, Contact, Subscriber
 from uuid import uuid4
 from flask_bcrypt import Bcrypt
 from functools import wraps
 import re  # For regex pattern matching
 import logging
 import os 
-from .model import db, User, LoginForm, Tag, Role, Comment, Contact, Subscriber
-from app import db, app
 
-bcrypt = Bcrypt(app)
+main = Blueprint('main', __name__)
+
+bcrypt = Bcrypt(main)
 comments = []
 login_manager = LoginManager()
-login_manager.init_app(app)
+login_manager.init_app(main)
 
-CORS(app,supports_credentials=True)
-app.logger.setLevel(logging.DEBUG)
+CORS(main,supports_credentials=True)
+main.logger.setLevel(logging.DEBUG)
 
 data = ["Example 1", "Example 2", "Example 3", "Another example"]
 
-main = Blueprint('main', __name__)
 
 def load_user(user_id):
     return User.query.get(user_id)
 
 
-@app.route('/login', methods=['POST'])
+@main.route('/login', methods=['POST'])
 def login():
     data = request.json
     email = data.get('email')
@@ -41,7 +41,7 @@ def login():
         return jsonify({"error": "Invalid credentials"}), 401
 
 
-@app.route('/verify-login', methods=['GET'])
+@main.route('/verify-login', methods=['GET'])
 def verify_login():
     if current_user.is_authenticated:
         # If the user is authenticated, return positive response
@@ -70,7 +70,7 @@ def login_required(f):
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-@app.route('/signup', methods=['POST'])
+@main.route('/signup', methods=['POST'])
 def signup():
     data = request.json
     email = data.get('email')
@@ -130,7 +130,7 @@ def is_strong_password(password):
 
     
 
-@app.route('/submit-comments', methods=['POST'])
+@main.route('/submit-comments', methods=['POST'])
 
 def submit_comments():
     if not current_user.is_authenticated:
@@ -169,7 +169,7 @@ def submit_comments():
     else:
         return jsonify({'error': 'Invalid data'}), 400
 
-@app.route('/get-comments', methods=['GET'])
+@main.route('/get-comments', methods=['GET'])
 def get_comments():
     all_comments = Comment.query.join(User).order_by(Comment.timestamp.desc()).all()  
     
@@ -187,14 +187,14 @@ def get_comments():
 
     return jsonify({'comments': comments_json}), 200
 
-@app.route('/api/tag-summary', methods=['GET'])
+@main.route('/api/tag-summary', methods=['GET'])
 def get_tag_summary():
     tags = Tag.query.all()
     tag_summary = {tag.name: tag.usage_count for tag in tags}
     return jsonify(tag_summary)
 
 
-@app.route('/contact', methods=['POST'])
+@main.route('/contact', methods=['POST'])
 def handle_contact():
     data = request.json
     new_contact = Contact(
@@ -208,7 +208,7 @@ def handle_contact():
     db.session.commit()
     return jsonify({"message": "Contact information received!", "code": 200})
 
-@app.route('/subscribe', methods=['POST'])
+@main.route('/subscribe', methods=['POST'])
 def subscribe():
     data = request.json
     email = data.get('EMAIL')
@@ -224,8 +224,8 @@ def subscribe():
     return jsonify({"message": "Invalid email address.", "status": "error"})
 
     
-if __name__ == '__main__':
-    with app.app_context():
-       db.create_all()
-       add_roles() 
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     with app.app_context():
+#        db.create_all()
+#        add_roles() 
+#     app.run(debug=True)
