@@ -92,7 +92,9 @@ class Subscriber(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True, nullable=False)
 
-
+@app.route('/')
+def index():
+    return jsonify({"message": "Welcome to my portfolio!"}), 200
 
 @app.route('/login', methods=['POST'])
 def login():
