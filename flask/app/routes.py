@@ -13,13 +13,6 @@ from . import bcrypt , login_manager
 
 main = Blueprint('main', __name__)
 
-# comments = []
-# login_manager = LoginManager()
-# login_manager.init_app(main)
-
-# CORS(main,supports_credentials=True)
-# main.logger.setLevel(logging.DEBUG)
-
 bcrypt = Bcrypt()
 comments = []
 login_manager = LoginManager()
