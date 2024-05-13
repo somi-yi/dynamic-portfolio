@@ -20,7 +20,11 @@ main = Blueprint('main', __name__)
 # CORS(main,supports_credentials=True)
 # main.logger.setLevel(logging.DEBUG)
 
-# data = ["Example 1", "Example 2", "Example 3", "Another example"]
+bcrypt = Bcrypt()
+comments = []
+login_manager = LoginManager()
+login_manager.init_app()
+data = ["Example 1", "Example 2", "Example 3", "Another example"]
 
 
 def load_user(user_id):
