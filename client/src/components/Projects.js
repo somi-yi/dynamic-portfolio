@@ -24,7 +24,7 @@ export const Projects = () => {
             id: 1,
             title: "Dynamic Portflio",
             description: "Design& Development",
-            imgUrl: projImg5,
+            imgUrl: projImg1,
             tag: ["All", "Web"],
             gitUrl: "https://www.youtube.com/watch?v=Kb1f5bvF6f4&t=25s",
             previewUrl: "https://www.youtube.com/watch?v=Kb1f5bvF6f4&t=25s",
