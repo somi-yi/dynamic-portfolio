@@ -1,8 +1,5 @@
-from flask import Flask, request, jsonify,session, redirect
+from flask import Flask, request, jsonify,session, redirect, Blueprint
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import DataRequired, Email
-from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS 
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 from uuid import uuid4
@@ -11,87 +8,23 @@ from functools import wraps
 import re  # For regex pattern matching
 import logging
 import os 
+from .model import db, User, LoginForm, Tag, Role, Comment, Contact, Subscriber
+from app import db, app
 
-# Initialize Flask app
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
-CORS(app,supports_credentials=True)
-app.logger.setLevel(logging.DEBUG)
-
-# Database configuration
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
-#postgresql://portfoliopostgresql_user:kxidwi1UmTHDblZkwC8JAjuw9nB1MyjM@dpg-cp0k417jbltc73dv29f0-a.oregon-postgres.render.com/portfoliopostgresql
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_ECHO'] = True
-db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 comments = []
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-
+CORS(app,supports_credentials=True)
+app.logger.setLevel(logging.DEBUG)
 
 data = ["Example 1", "Example 2", "Example 3", "Another example"]
 
+main = Blueprint('main', __name__)
 
 def load_user(user_id):
     return User.query.get(user_id)
-
-
-class Role(db.Model):
-    __tablename__='roles'
-    id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.String(80), unique=True)
-
-
-
-class User(db.Model,UserMixin):
-    __tablename__ = 'users'
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.Text, nullable=True)
-    role_id = db.Column(db.Integer, db.ForeignKey('roles.id')) 
-    active = db.Column(db.Boolean, default=True)
-    role = db.relationship('Role')
-    
-
-class LoginForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Login')
-
-class Tag(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), unique=True)
-    usage_count = db.Column(db.Integer, default=0)
-
-comment_tags = db.Table('comment_tags',
-    db.Column('comment_id', db.Integer, db.ForeignKey('comment.id'), primary_key=True),
-    db.Column('tag_id', db.Integer, db.ForeignKey('tag.id'), primary_key=True)
-)
-
-class Comment(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    user = db.relationship('User', backref='comments')
-    content = db.Column(db.String(500))
-    rating = db.Column(db.Integer)
-    timestamp = db.Column(db.DateTime, default=db.func.current_timestamp())
-    tags = db.relationship('Tag', secondary=comment_tags, backref=db.backref('comments', lazy=True))
-
-
-class Contact(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    firstName = db.Column(db.String(50))
-    lastName = db.Column(db.String(50))
-    email = db.Column(db.String(50))
-    phone = db.Column(db.String(50))
-    message = db.Column(db.String(500))
-
-class Subscriber(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(150), unique=True, nullable=False)
-
 
 
 @app.route('/login', methods=['POST'])
@@ -118,6 +51,7 @@ def verify_login():
         return jsonify({"status": "Not Logged In"}), 401
 
 def add_roles():
+
     for role_name in ['Previous Employer', 'Recruiter/HR', 'Visitor']:
         if not Role.query.filter_by(name=role_name).first():
             db.session.add(Role(name=role_name))
