@@ -19,12 +19,21 @@ class AddCommentComponent extends Component {
             localStorage.setItem('pendingComment', JSON.stringify({ commentContent, userid }));
             this.props.navigate('/login');
         } else {
-            // Add logic to submit the comment here
-            // This could be a call to your backend API
-            console.log("Submit Comment:", commentContent, userid);
-            // After submission, you might want to clear the form or give some feedback
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ commentContent, userid })
+        });
+        if (response.ok) {
+            console.log("Comment submitted successfully");
+            // Clear the form or give feedback
+        } else {
+            console.error("Failed to submit comment");
         }
-    };
+    }
+};
 
     changeCommentContentHandler = (event) => {
         this.setState({ commentContent: event.target.value });

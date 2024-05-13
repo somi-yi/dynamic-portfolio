@@ -2,7 +2,7 @@
 
 export const VerifyLogin = async () => {
     try {
-        const response = await fetch('/verify-login', {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/verify-login`, {
             credentials: 'include',  
         });
         const data = await response.json();

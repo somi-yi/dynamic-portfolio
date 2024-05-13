@@ -74,7 +74,7 @@ export const Addcomment = () => {
 
     const submitComment = async ({ comment, rating, tags }) => {
         try {
-            const response = await fetch('/submit-comments', {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/submit-comments`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

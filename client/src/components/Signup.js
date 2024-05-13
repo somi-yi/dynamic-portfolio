@@ -38,7 +38,7 @@ export const Signup = () => {
         }
 
         try {
-            const response = await fetch('/signup', {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

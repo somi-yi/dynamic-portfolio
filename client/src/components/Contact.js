@@ -28,7 +28,7 @@ export default function Contact() {
         e.preventDefault();
         setButtonText("Sending...");
         try {
-            let response = await fetch('/contact', {
+            let response = await fetch(`${process.env.REACT_APP_BASE_URL}/contact`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json;charset=utf-8",

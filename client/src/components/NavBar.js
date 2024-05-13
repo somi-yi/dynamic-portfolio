@@ -43,7 +43,7 @@ export const NavBar = ({ isHidden }) => {
     const handleLoginLogoutClick = async () => {
         if (isLoggedIn) {
             try {
-                const response = await fetch('/logout', {
+                const response = await fetch(`${process.env.REACT_APP_BASE_URL}/logout`, {
                     method: 'GET', 
                     credentials: 'include', // include cookies
                 });

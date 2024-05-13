@@ -11,7 +11,7 @@ export const Newsletter = () => {
         if (email && email.indexOf("@") > -1) {
             setStatus('sending');
             try {
-                const response = await fetch("/subscribe", {
+                const response = await fetch(`${process.env.REACT_APP_BASE_URL}/subscribe`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json;charset=utf-8",

@@ -10,7 +10,7 @@ export const Commentable = () => {
     // Fetch comments from the backend
     const fetchComments = async () => {
         try {
-            const response = await fetch("/get-comments");
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/get-comments`);
             const data = await response.json();
             setComments(data.comments);
             calculateRatings(data.comments);
@@ -21,7 +21,7 @@ export const Commentable = () => {
 
     const fetchTagSummary = async () => {
         try {
-            const response = await fetch("/api/tag-summary");
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/tag-summary`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
