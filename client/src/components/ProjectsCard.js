@@ -25,19 +25,16 @@ export const ProjectsCard = ({ title, description, imgUrl, index, gitUrl, previe
             initial="offscreen"
             whileInView="onscreen"
             viewport={{ once: true, amount: 0.5 }}
+            style={{ marginBottom: '20px' }}
         >
             <div className="proj-imgbx" >
                 <img src={imgUrl} alt={title} />        
                 <div className="proj-txtx">
                     <h4>{title}</h4>
-                   <a href={gitUrl} target="_blank" rel="noopener noreferrer"
-                        className="h-14 w-14 mr-2 border-2 relative  border-[#ADB7BE] hover:border-white group-hover:text-white"
-                    >
+                   <a href={gitUrl} target="_blank" rel="noopener noreferrer">
                         <h5>gitUrl</h5>
                     </a>
-                    <a href={previewUrl} target="_blank" rel="noopener noreferrer"
-                        className="h-14 w-14 border-2 relative border-[#ADB7BE] hover:border-white group-hover:text-white"
-                    >
+                    <a href={previewUrl} target="_blank" rel="noopener noreferrer">
                         <h5>previewUrl</h5> 
                     </a>
                 </div>

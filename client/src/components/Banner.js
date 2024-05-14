@@ -58,10 +58,10 @@ export const Banner = () => {
                                     <h1>{`Hi! I'm Somi Yi`} <br /><span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Web Developer", "Web Designer", "UI/UX Designer" ]'><span className="wrap">{text}</span></span></h1>
                                     {/* <h1> {`Hi I'm Qin Yi`}
                                       <br /> <span className={`txt-rotate ${isStriked && currentRoleIndex === 0 ? 'strike-through' : ''} ${currentRoleIndex === 0 ? 'original-role' : 'other-role'}`} dataperiod="1000" ><span className="wrap">{text}</span></span></h1> */}
-                                        <p>I am currently pursuing a Master's in Computer Science at Cardiff University, blending my financial expertise with a growing passion for technology. My background in improving accounting processes and management, also with a passion for programming, including proficiency in CSS, HTML, JavaScript, SQL, Python and Java. I excel in streamlining operations and embracing technology to enhance efficiency.
+                                        <p>I am currently pursuing a Master Degree in Computing at Cardiff University. I bring practical experience in Python, Java, SQL, JavaScript, HTML, and CSS. My project on developing, testing, and deploying an Admin Dashboard for E-commerce Analytics showcases my full-stack software development capabilities. My strong foundation in computer science, combined with a passion for continuous learning and collaborative teamwork, make me a valuable candidate. I am actively seeking opportunities to contribute my skills and knowledge. 
                                         </p>
                                   
-                                    <a href="/path/to/your/CV.pdf" download="SomiYi_CV.pdf" className="btn text-decoration-none " style={{ maxWidth: '240px', display: 'block' }}>
+                                    <a href="/Software Development-CV-SomiYi.pdf" download="SomiYi_CV.pdf" className="btn text-decoration-none " style={{ maxWidth: '240px', display: 'block' }}>
                                         Download CV <ArrowDownCircle size={25} />
                                     </a>
                                     

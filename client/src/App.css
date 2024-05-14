@@ -752,6 +752,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   transition: 0.5s ease-in-out;
   opacity: 0;
   width: 100%;
+  
 }
 
 .proj-imgbx:hover .proj-txtx {
@@ -771,6 +772,15 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-weight: 400;
   font-size: 15px;
   letter-spacing: 0.8px;
+}
+
+.proj-txtx a {
+  color: #ADB7BE;
+  transition: color 0.3s ease;
+}
+
+.proj-txtx a:hover {
+  color: white;
 }
 
 .background-image-right {

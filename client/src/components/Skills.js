@@ -17,6 +17,7 @@ import fullstack from "../assets/img/fullstack.png"
 import python from "../assets/img/python.png"
 import flask from "../assets/img/flask.png"
 import java from "../assets/img/java.png"
+import typescript from "../assets/img/typescript.png"
 import mongodb from "../assets/img/mongodb.png"
 import postger from "../assets/img/postger.png"
 import mysql from "../assets/img/mysql.png"
@@ -40,19 +41,20 @@ const setupIcons = () => {
     { id: 9, icon: <img src={java} alt="Java Icon" />, label: 'Java', quadrant: 4, radius: 350, orbit: 2 },
     { id: 11, icon: <img src={nodejs} alt="Nodejs Icon" />, label: 'Node.js', quadrant: 4, radius: 500 ,orbit: 2},
     { id: 10, icon: <img src={flask} alt="Flask Icon" />, label: 'Flask', quadrant: 4, radius: 400 ,orbit: 2},
+    { id: 12, icon: <img src={typescript} alt="Typescript Icon" />, label: 'Typescript', quadrant: 4, radius: 400 ,orbit: 3},
 
 
-    { id: 12, icon: <img src={mongodb} alt="Mongodb Icon" />, label: 'MongoDB', quadrant: 2, radius: 180 ,orbit: 1},
-    { id: 13, icon: <img src={mysql} alt="Mysql Icon" />, label: 'MySQL', quadrant: 2, radius: 180,orbit: 2 },
-    { id: 14, icon: <img src={dbbrowser} alt="DB Browser Icon" />, label: 'DB Browser', quadrant: 2, radius: 500,orbit: 2 },
-    { id: 15, icon: <img src={postger} alt="PostgerSQL Icon" />, label: 'PostgerSQL', quadrant: 2, radius: 500, orbit: 2 },
-    { id: 21, icon: <img src={powerbi} alt="PowerBI Icon" />, label: 'Power BI', quadrant: 2, radius: 550, orbit: 3 },
+    { id: 13, icon: <img src={mongodb} alt="Mongodb Icon" />, label: 'MongoDB', quadrant: 2, radius: 180 ,orbit: 1},
+    { id: 14, icon: <img src={mysql} alt="Mysql Icon" />, label: 'MySQL', quadrant: 2, radius: 180,orbit: 2 },
+    { id: 15, icon: <img src={dbbrowser} alt="DB Browser Icon" />, label: 'DB Browser', quadrant: 2, radius: 500,orbit: 2 },
+    { id: 16, icon: <img src={postger} alt="PostgerSQL Icon" />, label: 'PostgerSQL', quadrant: 2, radius: 500, orbit: 2 },
+    { id: 17, icon: <img src={powerbi} alt="PowerBI Icon" />, label: 'Power BI', quadrant: 2, radius: 550, orbit: 3 },
     
-    { id: 16, icon: <img src={vscode} alt="Vscode Icon" />, label: 'VS Code', quadrant: 1, radius: 180 ,orbit: 1},
-    { id: 17, icon: <img src={gitlab} alt="Gitlab Icon" />, label: 'GitLab', quadrant: 1, radius: 300 ,orbit: 2},
-    { id: 18, icon: <img src={github} alt="Github Icon" />, label: 'GitHub', quadrant: 1, radius: 400,orbit: 2 },
-    { id: 19, icon: <img src={git} alt="Git Icon" />, label: 'Git', quadrant: 1, radius: 400 ,orbit: 2},
-    { id: 20, icon: <img src={postman} alt="Postman Icon" />, label: 'Postman', quadrant: 1, radius: 500, orbit: 3 },
+    { id: 18, icon: <img src={vscode} alt="Vscode Icon" />, label: 'VS Code', quadrant: 1, radius: 180 ,orbit: 1},
+    { id: 19, icon: <img src={gitlab} alt="Gitlab Icon" />, label: 'GitLab', quadrant: 1, radius: 300 ,orbit: 2},
+    { id: 20, icon: <img src={github} alt="Github Icon" />, label: 'GitHub', quadrant: 1, radius: 400,orbit: 2 },
+    { id: 21, icon: <img src={git} alt="Git Icon" />, label: 'Git', quadrant: 1, radius: 400 ,orbit: 2},
+    { id: 22, icon: <img src={postman} alt="Postman Icon" />, label: 'Postman', quadrant: 1, radius: 500, orbit: 3 },
     
   
   ];

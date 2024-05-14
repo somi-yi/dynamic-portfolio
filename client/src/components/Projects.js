@@ -4,17 +4,12 @@ import { ProjectsCard } from "./ProjectsCard";
 import ProjectTag from "./ProjectTag";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import projImg1 from "../assets/img/project-img1.png";
-import projImg2 from "../assets/img/project-img2.jpg";
+import projImg2 from "../assets/img/project-img2.png";
 import projImg3 from "../assets/img/project-img3.png";
-import projImg4 from "../assets/img/project-img4.jpg";
+import projImg4 from "../assets/img/project-img4.png";
 import projImg5 from "../assets/img/project-img5.png";
-import projImg6 from "../assets/img/project-img6.jpg";
+import projImg6 from "../assets/img/project-img6.png";
 import 'animate.css';
-import TrackVisibility from 'react-on-screen';
-import { motion} from "framer-motion";
-import { useInView } from 'react-intersection-observer';
-
-
 
 export const Projects = () => {
 
@@ -23,16 +18,16 @@ export const Projects = () => {
         {
             id: 1,
             title: "Dynamic Portflio",
-            description: "Design& Development",
+            description: "Showcasing design and development skills",
             imgUrl: projImg1,
             tag: ["All", "Web"],
-            gitUrl: "https://www.youtube.com/watch?v=Kb1f5bvF6f4&t=25s",
-            previewUrl: "https://www.youtube.com/watch?v=Kb1f5bvF6f4&t=25s",
+            gitUrl: "https://github.com/somi-yi/dynamic-portfolio.git",
+            previewUrl: "/",
         },
         {
             id: 2,
             title: "FullStack E-Commence Dashboard",
-            description: "Application Development",
+            description: "Display and analyse transaction data",
             imgUrl: projImg2,
             tag: ["All", "Web"],
             gitUrl: "https://github.com/somi-yi/full-stack-e-commence-dashboard.git",
@@ -41,39 +36,38 @@ export const Projects = () => {
         {
             id: 3,
             title: "Assessments Mangement",
-            description: "Web Development",
-            imgUrl: projImg2,
+            description: "CRUD operation for assessments",
+            imgUrl: projImg3,
             tag: ["All", "Web"],
-            gitUrl: "https://www.youtube.com/watch?v=Kb1f5bvF6f4&t=25s",
-            previewUrl: "https://www.youtube.com/watch?v=Kb1f5bvF6f4&t=25s",
+            gitUrl: "/",
+            previewUrl: "/",
         },
         {
             id: 4,
             title: "To-do list",
             description: "Design& Development",
-            imgUrl: projImg3,
+            imgUrl: projImg4,
             tag: ["All", "Web"],
-            gitUrl: "https://www.youtube.com/watch?v=Kb1f5bvF6f4&t=25s",
-            previewUrl: "https://www.youtube.com/watch?v=Kb1f5bvF6f4&t=25s",
+            gitUrl: "/",
+            previewUrl: "/",
         },
         {
             id: 5,
-            title: "Weather Application",
-            description: "Design& Development",
-            imgUrl: projImg3,
+            title: "Heathy Eating Game Applocation",
+            description: "My dissertation project is in process",
+            imgUrl: projImg5,
             tag: ["All", "Mobile"],
-            gitUrl: "https://www.youtube.com/watch?v=Kb1f5bvF6f4&t=25s",
-            previewUrl: "https://www.youtube.com/watch?v=Kb1f5bvF6f4&t=25s",
+            gitUrl: "/",
+            previewUrl: "/",
         },
-       
-       { 
+       {
             id: 6,
-            title: "Personal Blog Web",
-            description: "Design& Development",
-            imgUrl: projImg1,
-            tag: ["All", "Web"],
-            gitUrl: "https://www.youtube.com/watch?v=Kb1f5bvF6f4&t=25s",
-            previewUrl: "https://www.youtube.com/watch?v=Kb1f5bvF6f4&t=25s",
+            title: "Weather Application",
+            description: "In process",
+            imgUrl: projImg6,
+            tag: ["All", "Mobile"],
+            gitUrl: "/",
+            previewUrl: "/",
         },
        
     ];
